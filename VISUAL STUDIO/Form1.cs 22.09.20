@@ -1,0 +1,142 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace лекция_22._09
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //listBox1.SelectedIndex - номер выбранной строки
+            //listBox1.Items.Count - количество данных в списке
+            //если listBox1.SelectedIndex =-1 означает что ничего не выбрано
+            if (listBox1.SelectedIndex > 0 && listBox1.SelectedIndex < listBox1.Items.Count)
+            {
+                MessageBox.Show("Номер выбранной строки" + (listBox1.SelectedIndex + 1).ToString());
+
+                //написать чтобы сообщение выводилось не MessageBox а в label
+
+                label1.Text = "номер выбранной строки" + (listBox1.SelectedIndex + 1).ToString();
+
+                // вывести название дисциплины в label2
+
+                label2.Text = listBox1.Items[listBox1.SelectedIndex].ToString();
+
+                //listBox1 - это массив данные в котором мы можем получить по номеру
+            }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex != -1)
+            {
+                listBox1.Items.RemoveAt(listBox1.SelectedIndex); //удаляем стороку по номеру
+            }
+            else
+            {
+                MessageBox.Show("Объект для удаления не выбран");
+            }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Trim() != "")
+            {
+                listBox1.Items.Add(textBox1.Text);
+            }
+            else
+            {
+                MessageBox.Show("введите наименование дисциплины");
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex != -1)
+            {
+                textBox2.Text = listBox1.Items[listBox1.SelectedIndex].ToString();
+                textBox2.Enabled = true;
+                button3.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("Объект для изменений не выбран");
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            listBox1.Items[listBox1.SelectedIndex] = textBox2.Text;
+
+            //реализовать добавление  удаление редактирование для комбобокс. Тема страны мира!!
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex != -1)
+            {
+                comboBox1.Items.RemoveAt(comboBox1.SelectedIndex); //удалить страну
+            }
+            else
+            {
+                MessageBox.Show("Объект для удаления не выбран");
+            }
+
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Trim() != "")
+            {
+                comboBox1.Items.Add(textBox1.Text);
+            }
+            else
+            {
+                MessageBox.Show("введите название страны");
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex != -1)
+            {
+                textBox2.Text = comboBox1.Items[comboBox1.SelectedIndex].ToString();
+               
+                button7.Enabled = true;
+            }
+        }
+    }
+}
+            
+    
+
+                
+            
+        
+
+        
+    
+
+    
+
